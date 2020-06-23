@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <bean id="userRepository" class="repository.UserRepository"/>
+    <bean id="gameRepository" class="repository.GameRepository"/>
+    <bean id="roundRepository" class="repository.RoundRepository"/>
+    <bean id="cityRepository" class="repository.CityRepository"/>
+    <bean id="countryRepository" class="repository.CountryRepository"/>
+    <bean id="seaRepository" class="repository.SeaRepository"/>
+
+    <bean id="service" class="Service">
+        <constructor-arg ref="userRepository"/>
+        <constructor-arg ref="gameRepository"/>
+        <constructor-arg ref="roundRepository"/>
+        <constructor-arg ref="cityRepository"/>
+        <constructor-arg ref="countryRepository"/>
+        <constructor-arg ref="seaRepository"/>
+    </bean>
+
+    <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
+
+        <property name="serviceName" value="Games"/>
+        <property name="service" ref="service"/>
+        <property name="serviceInterface" value="IService"/>
+        <property name="servicePort" value="1099"/>
+    </bean>
+</beans>
