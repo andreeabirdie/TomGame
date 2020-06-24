@@ -23,6 +23,16 @@ public class Round implements Serializable {
         this.round = round;
     }
 
+    public Round(Integer gameID, Integer round, String player, String country, String city, String sea, Integer points) {
+        this.gameID = gameID;
+        this.round = round;
+        this.player = player;
+        this.country = country;
+        this.city = city;
+        this.sea = sea;
+        this.points = points;
+    }
+
     @Id
     @Column(name="gameID")
     public Integer getGameID() {
@@ -87,6 +97,19 @@ public class Round implements Serializable {
 
     public void setPoints(Integer points) {
         this.points = points;
+    }
+
+    @Override
+    public String toString() {
+        return "Round{" +
+                "gameID=" + gameID +
+                ", round=" + round +
+                ", player='" + player + '\'' +
+                ", country='" + country + '\'' +
+                ", city='" + city + '\'' +
+                ", sea='" + sea + '\'' +
+                ", points=" + points +
+                '}';
     }
 }
 

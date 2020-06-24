@@ -19,7 +19,7 @@ public class CountryRepository implements ICountryRepository {
             Transaction tx = null;
             try {
                 tx = session.beginTransaction();
-                String queryString = "from City as c where c.name = ?";
+                String queryString = "from Country as c where c.name = ?";
                 List<Country> c = session.createQuery(queryString, Country.class)
                         .setParameter(0, name)
                         .list();

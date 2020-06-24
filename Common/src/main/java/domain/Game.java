@@ -15,6 +15,13 @@ public class Game implements Serializable {
     public Game() {
     }
 
+    public Game(Integer id, Integer currentRound, Integer sentResponses, String letters) {
+        this.id = id;
+        this.currentRound = currentRound;
+        this.sentResponses = sentResponses;
+        this.letters = letters;
+    }
+
     @Id
     @Column(name="id")
     public Integer getId() {

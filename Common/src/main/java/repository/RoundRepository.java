@@ -1,13 +1,14 @@
 package repository;
 
-import domain.Game;
 import domain.Round;
-import domain.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+@Component
 public class RoundRepository implements IRoundRepository {
 
     public RoundRepository() {
@@ -47,7 +48,11 @@ public class RoundRepository implements IRoundRepository {
             try {
                 tx = session.beginTransaction();
                 Round round = (Round) session.load(Round.class, new Round(r.getGameID(), r.getPlayer(), r.getRound()));
+                System.out.println(round);
                 round.setPoints(r.getPoints());
+                round.setCountry(r.getCountry());
+                round.setCity(r.getCity());
+                round.setSea(r.getSea());
                 tx.commit();
             } catch (RuntimeException ex) {
                 if (tx != null)
@@ -72,6 +77,29 @@ public class RoundRepository implements IRoundRepository {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    public List<String> getPlayers(Integer gameID) {
+        try (Session session = JdbcUtils.getSessionFactory().openSession()) {
+            Transaction tx = null;
+            try {
+                tx = session.beginTransaction();
+                String queryString = "from Round as r where r.gameID = ? and r.round = 1";
+                List<Round> rounds = session.createQuery(queryString, Round.class)
+                        .setParameter(0, gameID)
+                        .list();
+                tx.commit();
+                List<String> players = rounds.stream().map(r->r.getPlayer()).collect(Collectors.toList());
+                return players;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }

@@ -8,7 +8,7 @@
 
         <property name="dialect">org.hibernate.dialect.SQLiteDialect</property>
         <property name="connection.driver_class">org.sqlite.JDBC</property>
-        <property name="connection.url">jdbc:sqlite:D:\MPP\practice\TomGame\db\TOMGame.db</property>
+        <property name="connection.url">jdbc:sqlite:D:\MPP\practice\TOM\db\TOMGame.db</property>
 
         <property name="hibernate.hbm2ddl.auto">update</property>
 

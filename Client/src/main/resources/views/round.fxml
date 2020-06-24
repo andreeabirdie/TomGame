@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="292.0" prefWidth="260.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RoundController">
+   <children>
+      <TextField fx:id="countryField" layoutX="60.0" layoutY="93.0" promptText="tara" />
+      <TextField fx:id="cityField" layoutX="60.0" layoutY="134.0" promptText="oras" />
+      <TextField fx:id="seaField" layoutX="60.0" layoutY="177.0" promptText="mare" />
+      <Button fx:id="sendResponse" layoutX="157.0" layoutY="224.0" mnemonicParsing="false" onAction="#sendResponse" text="trimite" />
+      <Text layoutX="60.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Punctaj curent:" />
+      <Text layoutX="60.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Litera:" />
+      <Text fx:id="ltrTxt" layoutX="108.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="98.0" />
+      <Text fx:id="pointsTxt" layoutX="157.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="52.0" />
+   </children>
+</AnchorPane>
